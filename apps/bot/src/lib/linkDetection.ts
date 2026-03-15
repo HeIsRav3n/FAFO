@@ -16,11 +16,15 @@ export async function handleLinkDetection(message: Message) {
   const handle = match[4];
   const tweetId = match[6];
 
+  if (!handle) return;
+
+  const normalizedHandle = handle.toLowerCase();
+
   console.log(chalk.cyan(`\n🔗 Detected link: ${url}`));
 
   try {
     // 1. Fetch Twitter User Info using Core Package
-    const twitterUser = await fetchTwitterUser(handle);
+    const twitterUser = await fetchTwitterUser(normalizedHandle);
 
     if (!twitterUser) {
       console.error(chalk.red(`Could not find Twitter user: @${handle}`));
@@ -32,7 +36,7 @@ export async function handleLinkDetection(message: Message) {
 
     // 3. Register/Update Project in DB
     const project = await prisma.project.upsert({
-      where: { handle: handle.toLowerCase() },
+      where: { handle: normalizedHandle },
       update: {
         name: twitterUser.name,
         profileImageUrl: twitterUser.profileImageUrl,
@@ -42,7 +46,7 @@ export async function handleLinkDetection(message: Message) {
         lastUpdated: new Date(),
       },
       create: {
-        handle: handle.toLowerCase(),
+        handle: normalizedHandle,
         name: twitterUser.name,
         profileImageUrl: twitterUser.profileImageUrl,
         followersCount: twitterUser.followers,

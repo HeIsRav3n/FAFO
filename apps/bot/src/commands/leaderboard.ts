@@ -32,7 +32,7 @@ export const leaderboardCommand = {
       embed.setTitle('🏆 Top Callers by Reputation');
       embed.setDescription(
         topCallers.length > 0 
-          ? topCallers.map((c, i) => `${i + 1}. **${c.username}** - ${c.reputation} pts (${c.totalCalls} calls)`).join('\n')
+          ? topCallers.map((c: typeof topCallers[0], i: number) => `${i + 1}. **${c.username}** - ${c.reputation} pts (${c.totalCalls} calls)`).join('\n')
           : 'No callers found yet.'
       );
     } else if (type === 'projects') {
@@ -44,7 +44,7 @@ export const leaderboardCommand = {
       embed.setTitle('🚀 Top Projects by Followers');
       embed.setDescription(
         topProjects.length > 0 
-          ? topProjects.map((p, i) => `${i + 1}. **@${p.handle}** - ${p.followersCount.toLocaleString()} followers`).join('\n')
+          ? topProjects.map((p: typeof topProjects[0], i: number) => `${i + 1}. **@${p.handle}** - ${p.followersCount.toLocaleString()} followers`).join('\n')
           : 'No projects found yet.'
       );
     } else {

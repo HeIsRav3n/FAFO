@@ -23,18 +23,27 @@ export type TwitterInfo = z.infer<typeof TwitterInfoSchema>;
 
 export async function fetchTwitterUser(handle: string): Promise<TwitterInfo | null> {
   try {
-    const user = await twitterClient.v2.userByUsername(handle, {
+    if (!handle || handle.trim().length === 0) {
+      console.error('Invalid Twitter handle provided');
+      return null;
+    }
+
+    const cleanHandle = handle.replace(/^@/, '').trim();
+    const user = await twitterClient.v2.userByUsername(cleanHandle, {
       "user.fields": ["public_metrics", "profile_image_url", "created_at", "verified"]
     });
 
-    if (!user.data) return null;
+    if (!user.data) {
+      console.warn(`No data found for Twitter user: @${cleanHandle}`);
+      return null;
+    }
 
     const { id, name, profile_image_url, public_metrics, created_at, verified } = user.data;
 
     return {
       id,
-      handle,
-      name,
+      handle: cleanHandle,
+      name: name || cleanHandle,
       followers: public_metrics?.followers_count || 0,
       following: public_metrics?.following_count || 0,
       profileImageUrl: profile_image_url,
@@ -42,7 +51,7 @@ export async function fetchTwitterUser(handle: string): Promise<TwitterInfo | nu
       createdAt: created_at ? new Date(created_at) : undefined,
     };
   } catch (error) {
-    console.error('Error fetching Twitter user:', error);
+    console.error(`Error fetching Twitter user @${handle}:`, error);
     return null;
   }
 }
@@ -57,9 +66,14 @@ export const AIAnalysisSchema = z.object({
 
 export type AIAnalysis = z.infer<typeof AIAnalysisSchema>;
 
-export async function analyzeTweet(content: string): Promise<AIAnalysis | null> {
+export async function analyzeTweet(tweet: string): Promise<AIAnalysis | null> {
   try {
-    const response = await openai.chat.completions.create({
+    if (!tweet || tweet.trim().length === 0) {
+      console.warn('Empty tweet content provided for analysis');
+      return null;
+    }
+
+    const response: any = await openai.chat.completions.create({
       model: "gpt-4-turbo-preview",
       messages: [
         {
@@ -68,14 +82,23 @@ export async function analyzeTweet(content: string): Promise<AIAnalysis | null> 
         },
         {
           role: "user",
-          content
+          content: tweet.slice(0, 2000) // Limit to 2000 chars to prevent token overflow
         }
       ],
-      response_format: { type: "json_object" }
+      response_format: { type: "json_object" },
+      temperature: 0.7,
+      max_tokens: 1024
     });
 
-    const result = JSON.parse(response.choices[0].message.content || '{}');
-    return AIAnalysisSchema.parse(result);
+    const responseContent = response.choices?.[0]?.message?.content;
+    if (!responseContent) {
+      console.warn('No response content from OpenAI');
+      return null;
+    }
+
+    const result = JSON.parse(responseContent);
+    const validated = AIAnalysisSchema.parse(result);
+    return validated;
   } catch (error) {
     console.error('Error analyzing tweet:', error);
     return null;

@@ -38,7 +38,7 @@ export const callerProfileCommand = {
         { name: 'Accuracy', value: `${(caller.accuracyScore * 100).toFixed(1)}%`, inline: true }
       )
       .addFields({ name: 'Recent Calls', value: caller.calls.length > 0
-        ? caller.calls.map(c => `• **@${c.project.handle}** (<t:${Math.floor(c.timestamp.getTime() / 1000)}:R>)`).join('\n')
+        ? caller.calls.map((c: typeof caller.calls[0]) => `• **@${c.project.handle}** (<t:${Math.floor(c.timestamp.getTime() / 1000)}:R>)`).join('\n')
         : 'No calls yet.'
       })
       .setTimestamp()

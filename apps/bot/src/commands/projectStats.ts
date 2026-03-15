@@ -42,7 +42,7 @@ export const projectStatsCommand = {
         { name: 'Last Updated', value: `<t:${Math.floor(project.lastUpdated.getTime() / 1000)}:R>`, inline: true }
       )
       .addFields({ name: 'Recent Calls', value: project.calls.length > 0
-        ? project.calls.map(c => `• Called by **${c.caller.username}** (<t:${Math.floor(c.timestamp.getTime() / 1000)}:R>)`).join('\n')
+        ? project.calls.map((c: typeof project.calls[0]) => `• Called by **${c.caller.username}** (<t:${Math.floor(c.timestamp.getTime() / 1000)}:R>)`).join('\n')
         : 'No calls registered yet.'
       })
       .setTimestamp()

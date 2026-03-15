@@ -28,32 +28,50 @@ client.once(Events.ClientReady, async (c) => {
 });
 
 client.on(Events.MessageCreate, async (message) => {
-  if (message.author.bot) return;
+  try {
+    if (message.author.bot) return;
 
-  // Link Detection Logic
-  await handleLinkDetection(message);
+    // Link Detection Logic
+    await handleLinkDetection(message);
+  } catch (error) {
+    console.error(chalk.red('Error processing message:'), error);
+  }
 });
 
 client.on(Events.InteractionCreate, async (interaction) => {
-  if (!interaction.isChatInputCommand()) return;
-
-  const command = (client as any).commands.get(interaction.commandName);
-
-  if (!command) {
-    console.error(`No command matching ${interaction.commandName} was found.`);
-    return;
-  }
-
   try {
+    if (!interaction.isChatInputCommand()) return;
+
+    const command = (client as any).commands.get(interaction.commandName);
+
+    if (!command) {
+      console.error(chalk.red(`No command matching ${interaction.commandName} was found.`));
+      return;
+    }
+
     await command.execute(interaction);
   } catch (error) {
-    console.error(error);
-    if (interaction.replied || interaction.deferred) {
-      await interaction.followUp({ content: 'There was an error while executing this command!', ephemeral: true });
-    } else {
-      await interaction.reply({ content: 'There was an error while executing this command!', ephemeral: true });
+    console.error(chalk.red('Command execution error:'), error);
+    const interactionAny = interaction as any;
+    const isReplied = interactionAny.replied || interactionAny.deferred;
+    try {
+      if (isReplied) {
+        await interactionAny.followUp({ content: 'There was an error while executing this command!', ephemeral: true });
+      } else {
+        await interactionAny.reply({ content: 'There was an error while executing this command!', ephemeral: true });
+      }
+    } catch (replyError) {
+      console.error(chalk.red('Failed to send error message:'), replyError);
     }
   }
+});
+
+client.on('error', (error) => {
+  console.error(chalk.red('Discord client error:'), error);
+});
+
+process.on('unhandledRejection', (reason) => {
+  console.error(chalk.red('Unhandled Promise Rejection:'), reason);
 });
 
 client.login(process.env.DISCORD_TOKEN);

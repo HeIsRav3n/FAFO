@@ -7,17 +7,25 @@ import { projectStatsCommand } from '../commands/projectStats';
 
 dotenv.config();
 
-const commandList = [
-  leaderboardCommand,
-  callerProfileCommand,
-  projectStatsCommand,
+interface CommandObject {
+  data: {
+    toJSON: () => object;
+    name: string;
+  };
+  execute: (interaction: any) => Promise<void>;
+}
+
+const commands: CommandObject[] = [
+  leaderboardCommand as CommandObject,
+  callerProfileCommand as CommandObject,
+  projectStatsCommand as CommandObject,
 ];
 
-const commands = commandList.map(cmd => cmd.data.toJSON());
+const commandData = commands.map(cmd => cmd.data.toJSON());
 
 export async function registerCommands(client: Client) {
   // Load commands into collection
-  for (const cmd of commandList) {
+  for (const cmd of commands) {
     (client as any).commands.set(cmd.data.name, cmd);
   }
 
@@ -28,7 +36,7 @@ export async function registerCommands(client: Client) {
 
     await rest.put(
       Routes.applicationCommands(process.env.DISCORD_CLIENT_ID || ''),
-      { body: commands },
+      { body: commandData },
     );
 
     console.log(chalk.green('✅ Successfully reloaded application (/) commands.'));
@@ -36,3 +44,4 @@ export async function registerCommands(client: Client) {
     console.error(chalk.red('Error registering commands:'), error);
   }
 }
+
