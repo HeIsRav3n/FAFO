@@ -8,7 +8,7 @@ WORKDIR /app
 # Install turbo and other global deps
 RUN npm install -g turbo
 
-# Copy the monorepo files
+# Copy the monorepo files (from root context)
 COPY package.json package-lock.json turbo.json ./
 COPY apps/bot/package.json ./apps/bot/package.json
 COPY packages/database/package.json ./packages/database/package.json
