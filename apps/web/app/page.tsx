@@ -7,6 +7,8 @@ import {
   ShieldCheck 
 } from "lucide-react";
 
+export const dynamic = 'force-dynamic';
+
 async function getStats() {
   // These will work once migrations are run and data is added
   try {

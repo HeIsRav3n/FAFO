@@ -1,0 +1,154 @@
+﻿node.exe : ÔÇó turbo 
+2.8.17
+At line:1 char:1
++ & "C:\Program Files
+\nodejs/node.exe" 
+"C:\Program 
+Files\nodejs/node_mo 
+...
++ ~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~
+    + CategoryInfo   
+           : NotSpe  
+  cified: (ÔÇó tur   
+ bo 2.8.17:String    
+) [], RemoteExce    
+ption
+    + FullyQualified 
+   ErrorId : Native  
+  CommandError
+ 
+ÔÇó Packages in scope: web
+ÔÇó Running build in 1 packages
+ÔÇó Remote caching disabled
+web:build: cache miss, executing f766e10f9da1f802
+web:build: 
+web:build: > web@0.1.0 build
+web:build: > next build
+web:build: 
+web:build:    Ôû▓ Next.js 14.1.0
+web:build: 
+web:build:    Creating an optimized production build ...
+web:build:  Ô£ô Compiled successfully
+web:build:    Linting and checking validity of types ...
+web:build:    Collecting page data ...
+web:build:    Generating static pages (0/5) ...
+web:build: TypeError: Cannot read properties of null (reading 'useContext')
+web:build:     at exports.useContext (C:\Users\RAV3N\Downloads\VIBE CODE\FAFO\node_modules\react\cjs\react.production.js:489:33)
+web:build:     at StyleRegistry (C:\Users\RAV3N\Downloads\VIBE CODE\FAFO\node_modules\styled-jsx\dist\index\index.js:450:30)
+web:build:     at Wc (C:\Users\RAV3N\Downloads\VIBE CODE\FAFO\apps\web\node_modules\react-dom\cjs\react-dom-server.browser.production.min.js:68:44)
+web:build:     at Zc (C:\Users\RAV3N\Downloads\VIBE CODE\FAFO\apps\web\node_modules\react-dom\cjs\react-dom-server.browser.production.min.js:70:253)
+web:build:     at Z (C:\Users\RAV3N\Downloads\VIBE CODE\FAFO\apps\web\node_modules\react-dom\cjs\react-dom-server.browser.production.min.js:76:89)
+web:build:     at Zc (C:\Users\RAV3N\Downloads\VIBE CODE\FAFO\apps\web\node_modules\react-dom\cjs\react-dom-server.browser.production.min.js:74:209)
+web:build:     at Z (C:\Users\RAV3N\Downloads\VIBE CODE\FAFO\apps\web\node_modules\react-dom\cjs\react-dom-server.browser.production.min.js:76:89)
+web:build:     at Zc (C:\Users\RAV3N\Downloads\VIBE CODE\FAFO\apps\web\node_modules\react-dom\cjs\react-dom-server.browser.production.min.js:74:209)
+web:build:     at Z (C:\Users\RAV3N\Downloads\VIBE CODE\FAFO\apps\web\node_modules\react-dom\cjs\react-dom-server.browser.production.min.js:76:89)
+web:build:     at Zc (C:\Users\RAV3N\Downloads\VIBE CODE\FAFO\apps\web\node_modules\react-dom\cjs\react-dom-server.browser.production.min.js:74:209)
+web:build: 
+web:build: Error occurred prerendering page "/404". Read more: https://nextjs.org/docs/messages/prerender-error
+web:build: 
+web:build: TypeError: Cannot read properties of null (reading 'useContext')
+web:build:     at exports.useContext (C:\Users\RAV3N\Downloads\VIBE CODE\FAFO\node_modules\react\cjs\react.production.js:489:33)
+web:build:     at StyleRegistry (C:\Users\RAV3N\Downloads\VIBE CODE\FAFO\node_modules\styled-jsx\dist\index\index.js:450:30)
+web:build:     at Wc (C:\Users\RAV3N\Downloads\VIBE CODE\FAFO\apps\web\node_modules\react-dom\cjs\react-dom-server.browser.production.min.js:68:44)
+web:build:     at Zc (C:\Users\RAV3N\Downloads\VIBE CODE\FAFO\apps\web\node_modules\react-dom\cjs\react-dom-server.browser.production.min.js:70:253)
+web:build:     at Z (C:\Users\RAV3N\Downloads\VIBE CODE\FAFO\apps\web\node_modules\react-dom\cjs\react-dom-server.browser.production.min.js:76:89)
+web:build:     at Zc (C:\Users\RAV3N\Downloads\VIBE CODE\FAFO\apps\web\node_modules\react-dom\cjs\react-dom-server.browser.production.min.js:74:209)
+web:build:     at Z (C:\Users\RAV3N\Downloads\VIBE CODE\FAFO\apps\web\node_modules\react-dom\cjs\react-dom-server.browser.production.min.js:76:89)
+web:build:     at Zc (C:\Users\RAV3N\Downloads\VIBE CODE\FAFO\apps\web\node_modules\react-dom\cjs\react-dom-server.browser.production.min.js:74:209)
+web:build:     at Z (C:\Users\RAV3N\Downloads\VIBE CODE\FAFO\apps\web\node_modules\react-dom\cjs\react-dom-server.browser.production.min.js:76:89)
+web:build:     at Zc (C:\Users\RAV3N\Downloads\VIBE CODE\FAFO\apps\web\node_modules\react-dom\cjs\react-dom-server.browser.production.min.js:74:209)
+web:build: 
+web:build:    Generating static pages (1/5) 
+web:build: 
+web:build:    Generating static pages (2/5) 
+web:build: TypeError: Cannot read properties of null (reading 'useContext')
+web:build:     at exports.useContext (C:\Users\RAV3N\Downloads\VIBE CODE\FAFO\node_modules\react\cjs\react.production.js:489:33)
+web:build:     at StyleRegistry (C:\Users\RAV3N\Downloads\VIBE CODE\FAFO\node_modules\styled-jsx\dist\index\index.js:450:30)
+web:build:     at Wc (C:\Users\RAV3N\Downloads\VIBE CODE\FAFO\apps\web\node_modules\react-dom\cjs\react-dom-server.browser.production.min.js:68:44)
+web:build:     at Zc (C:\Users\RAV3N\Downloads\VIBE CODE\FAFO\apps\web\node_modules\react-dom\cjs\react-dom-server.browser.production.min.js:70:253)
+web:build:     at Z (C:\Users\RAV3N\Downloads\VIBE CODE\FAFO\apps\web\node_modules\react-dom\cjs\react-dom-server.browser.production.min.js:76:89)
+web:build:     at Zc (C:\Users\RAV3N\Downloads\VIBE CODE\FAFO\apps\web\node_modules\react-dom\cjs\react-dom-server.browser.production.min.js:74:209)
+web:build:     at Z (C:\Users\RAV3N\Downloads\VIBE CODE\FAFO\apps\web\node_modules\react-dom\cjs\react-dom-server.browser.production.min.js:76:89)
+web:build:     at Zc (C:\Users\RAV3N\Downloads\VIBE CODE\FAFO\apps\web\node_modules\react-dom\cjs\react-dom-server.browser.production.min.js:74:209)
+web:build:     at Z (C:\Users\RAV3N\Downloads\VIBE CODE\FAFO\apps\web\node_modules\react-dom\cjs\react-dom-server.browser.production.min.js:76:89)
+web:build:     at Zc (C:\Users\RAV3N\Downloads\VIBE CODE\FAFO\apps\web\node_modules\react-dom\cjs\react-dom-server.browser.production.min.js:74:209)
+web:build: 
+web:build: Error occurred prerendering page "/500". Read more: https://nextjs.org/docs/messages/prerender-error
+web:build: 
+web:build: TypeError: Cannot read properties of null (reading 'useContext')
+web:build:     at exports.useContext (C:\Users\RAV3N\Downloads\VIBE CODE\FAFO\node_modules\react\cjs\react.production.js:489:33)
+web:build:     at StyleRegistry (C:\Users\RAV3N\Downloads\VIBE CODE\FAFO\node_modules\styled-jsx\dist\index\index.js:450:30)
+web:build:     at Wc (C:\Users\RAV3N\Downloads\VIBE CODE\FAFO\apps\web\node_modules\react-dom\cjs\react-dom-server.browser.production.min.js:68:44)
+web:build:     at Zc (C:\Users\RAV3N\Downloads\VIBE CODE\FAFO\apps\web\node_modules\react-dom\cjs\react-dom-server.browser.production.min.js:70:253)
+web:build:     at Z (C:\Users\RAV3N\Downloads\VIBE CODE\FAFO\apps\web\node_modules\react-dom\cjs\react-dom-server.browser.production.min.js:76:89)
+web:build:     at Zc (C:\Users\RAV3N\Downloads\VIBE CODE\FAFO\apps\web\node_modules\react-dom\cjs\react-dom-server.browser.production.min.js:74:209)
+web:build:     at Z (C:\Users\RAV3N\Downloads\VIBE CODE\FAFO\apps\web\node_modules\react-dom\cjs\react-dom-server.browser.production.min.js:76:89)
+web:build:     at Zc (C:\Users\RAV3N\Downloads\VIBE CODE\FAFO\apps\web\node_modules\react-dom\cjs\react-dom-server.browser.production.min.js:74:209)
+web:build:     at Z (C:\Users\RAV3N\Downloads\VIBE CODE\FAFO\apps\web\node_modules\react-dom\cjs\react-dom-server.browser.production.min.js:76:89)
+web:build: 
+web:build:    Generating static pages (3/5) 
+web:build:     at Zc (C:\Users\RAV3N\Downloads\VIBE CODE\FAFO\apps\web\node_modules\react-dom\cjs\react-dom-server.browser.production.min.js:74:209)
+web:build: prisma:error 
+web:build: Invalid `prisma.call.count()` invocation:
+web:build: 
+web:build: 
+web:build: error: Environment variable not found: DATABASE_URL.
+web:build:   -->  schema.prisma:7
+web:build:    | 
+web:build:  6 |   provider = "postgresql"
+web:build:  7 |   url      = env("DATABASE_URL")
+web:build:    | 
+web:build: 
+web:build: Validation Error Count: 1
+web:build: prisma:error 
+web:build: Invalid `prisma.call.count()` invocation:
+web:build: 
+web:build: 
+web:build: error: Environment variable not found: DATABASE_URL.
+web:build:   -->  schema.prisma:7
+web:build:    | 
+web:build:  6 |   provider = "postgresql"
+web:build:  7 |   url      = env("DATABASE_URL")
+web:build:    | 
+web:build: 
+web:build: Validation Error Count: 1
+web:build: 
+web:build:  Ô£ô Generating static pages (5/5) 
+web:build: 
+web:build: > Export encountered errors on following paths:
+web:build: 	/_error: /404
+web:build: 	/_error: /500
+web:build: npm error Lifecycle script `build` failed with error:
+web:build: npm error code 1
+web:build: npm error path C:\Users\RAV3N\Downloads\VIBE CODE\FAFO\apps\web
+web:build: npm error workspace web@0.1.0
+web:build: npm error location C:\Users\RAV3N\Downloads\VIBE CODE\FAFO\apps\web
+web:build: npm error command failed
+web:build: npm error command C:\WINDOWS\system32\cmd.exe /d /s /c next build
+web:build: ERROR: 
+command finished 
+with error: command (
+C:\Users\RAV3N\Downlo
+ads\VIBE 
+CODE\FAFO\apps\web) 
+C:\Program 
+Files\nodejs\npm.cmd 
+run build exited (1)
+web#build: command (C
+:\Users\RAV3N\Downloa
+ds\VIBE 
+CODE\FAFO\apps\web) 
+C:\Program 
+Files\nodejs\npm.cmd 
+run build exited (1)
+
+ Tasks:    0 successful, 1 total
+Cached:    0 cached, 1 total
+  Time:    8.602s 
+Failed:    web#build
+
+ ERROR  run failed: 
+command  exited (1)

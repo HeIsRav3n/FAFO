@@ -1,6 +1,10 @@
 {
   "name": "FAFO",
   "private": true,
+  "overrides": {
+    "react": "18.2.0",
+    "react-dom": "18.2.0"
+  },
   "scripts": {
     "build": "turbo run build",
     "dev": "turbo run dev",
