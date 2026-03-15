@@ -1,3 +1,4 @@
+// Production Deployment Trigger - v1.0.1
 import { Client, GatewayIntentBits, Collection, Events } from 'discord.js';
 import * as dotenv from 'dotenv';
 import { prisma } from '@vibe/database';
