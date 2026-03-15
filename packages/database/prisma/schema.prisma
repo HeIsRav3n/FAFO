@@ -1,0 +1,102 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Caller {
+  id            String   @id @default(cuid())
+  discordId     String   @unique
+  username      String
+  reputation    Int      @default(0)
+  totalCalls    Int      @default(0)
+  accuracyScore Float    @default(0.0)
+  calls         Call[]
+  votes         Vote[]
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+}
+
+model Project {
+  id              String           @id @default(cuid())
+  handle          String           @unique
+  name            String?
+  profileImageUrl String?
+  followersCount  Int              @default(0)
+  followingCount  Int              @default(0)
+  verified        Boolean          @default(false)
+  accountCreatedAt DateTime?
+  calls           Call[]
+  snapshots       MetricSnapshot[]
+  lastUpdated     DateTime         @default(now())
+  createdAt       DateTime         @default(now())
+  updatedAt       DateTime         @updatedAt
+}
+
+model Call {
+  id               String   @id @default(cuid())
+  callerId         String
+  caller           Caller   @relation(fields: [callerId], references: [id])
+  projectId        String
+  project          Project  @relation(fields: [projectId], references: [id])
+  tweetUrl         String
+  tweetContent     String?
+  followersAtCall  Int
+  timestamp        DateTime @default(now())
+  serverId         String
+  channelId        String
+  messageId        String   @unique
+  votes            Vote[]
+  roi24h           Float?
+  roi7d            Float?
+  roi30d           Float?
+  status           CallStatus @default(ACTIVE)
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+}
+
+enum CallStatus {
+  ACTIVE
+  EXPIRED
+  SUCCESS
+  FAILED
+}
+
+model Vote {
+  id        String   @id @default(cuid())
+  callId    String
+  call      Call     @relation(fields: [callId], references: [id])
+  voterId   String
+  voter     Caller   @relation(fields: [voterId], references: [id])
+  type      VoteType
+  timestamp DateTime @default(now())
+
+  @@unique([callId, voterId])
+}
+
+enum VoteType {
+  FIRE
+  DEAD
+  MOON
+  RISKY
+}
+
+model MetricSnapshot {
+  id          String   @id @default(cuid())
+  projectId   String
+  project     Project  @relation(fields: [projectId], references: [id])
+  followers   Int
+  timestamp   DateTime @default(now())
+}
+
+model Server {
+  id        String   @id @default(cuid())
+  discordId String   @unique
+  name      String
+  config    Json     @default("{}")
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
