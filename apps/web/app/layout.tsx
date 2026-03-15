@@ -1,4 +1,4 @@
-// Production Deployment Trigger - v1.0.3
+// Production Deployment Trigger - v1.0.4
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
